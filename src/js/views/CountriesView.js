@@ -10,31 +10,31 @@ export const showMyanmar = (data) => {
 };
 const totalOfEachCountry = [];
 export const getConfirmed = (data) => {
-  //   function find_duplicate_in_array(arra1) {
-  //     var object = {};
-  //     var result = [];
+  // function find_duplicate_in_array(arra1) {
+  //   var object = {};
+  //   var result = [];
 
-  //     arra1.forEach(function (item) {
-  //       if (!object[item]) object[item] = 0;
-  //       object[item] += 1;
-  //     });
+  //   arra1.forEach(function (item) {
+  //     if (!object[item]) object[item] = 0;
+  //     object[item] += 1;
+  //   });
 
-  //     for (var prop in object) {
-  //       if (object[prop] >= 2) {
-  //         result.push(prop);
-  //       }
+  //   for (var prop in object) {
+  //     if (object[prop] >= 2) {
+  //       result.push(prop);
   //     }
-
-  //     return result;
   //   }
-  //   const countryArr = [];
-  //   data.forEach((country) => countryArr.push(country.countryRegion));
-  //   //   const duplcation = find_duplicate_in_array(data);
-  //   //   console.log(countryArr);
-  //   //   console.log(find_duplicate_in_array(countryArr));
 
-  //   const uniqueArray = Array.from(new Set(countryArr)); // Unique Array ['a', 'b'];
-  //   console.log(uniqueArray);
+  //   return result;
+  // }
+  // const countryArr = [];
+  // data.forEach((country) => countryArr.push(country.countryRegion));
+  // const duplcation = find_duplicate_in_array(data);
+  // console.log(countryArr);
+  // console.log(find_duplicate_in_array(countryArr));
+
+  // const uniqueArray = Array.from(new Set(countryArr)); // Unique Array ['a', 'b'];
+  // console.log(uniqueArray);
   let sortedArr = [];
 
   let US = [];
@@ -59,6 +59,7 @@ export const getConfirmed = (data) => {
   let Sweden = [];
   let Japan = [];
   let Ukraine = [];
+  let Belgium = [];
 
   let largeStateArr = [];
   let sumArr = [];
@@ -130,6 +131,9 @@ export const getConfirmed = (data) => {
     if (curr.countryRegion === "Ukraine") {
       Ukraine.push(curr);
     }
+    if (curr.countryRegion === "Belgium") {
+      Belgium.push(curr);
+    }
   });
 
   const getTotal = (stateArr, state) => {
@@ -165,6 +169,7 @@ export const getConfirmed = (data) => {
   getTotal(Sweden, "Sweden");
   getTotal(Japan, "Japan");
   getTotal(Ukraine, "Ukraine");
+  getTotal(Belgium, "Belgium");
 
   // console.log(sumArr);
   data.forEach((curr) => {
@@ -191,6 +196,7 @@ export const getConfirmed = (data) => {
       "Sweden",
       "Japan",
       "Ukraine",
+      "Belgium",
     ];
     if (selectedCountries.indexOf(curr.countryRegion) === -1) {
       sumArr.push([curr.countryRegion, curr.confirmed]);
@@ -210,6 +216,31 @@ export const getConfirmed = (data) => {
 };
 
 export const getRecovered = (data) => {
+  // function find_duplicate_in_array(arra1) {
+  //   var object = {};
+  //   var result = [];
+
+  //   arra1.forEach(function (item) {
+  //     if (!object[item]) object[item] = 0;
+  //     object[item] += 1;
+  //   });
+
+  //   for (var prop in object) {
+  //     if (object[prop] >= 2) {
+  //       result.push(prop);
+  //     }
+  //   }
+
+  //   return result;
+  // }
+  // const countryArr = [];
+  // data.forEach((country) => countryArr.push(country.countryRegion));
+  // const duplcation = find_duplicate_in_array(data);
+  // console.log(countryArr);
+  // console.log(find_duplicate_in_array(countryArr));
+
+  // const uniqueArray = Array.from(new Set(countryArr)); // Unique Array ['a', 'b'];
+  // console.log(uniqueArray);
   let China = [];
   let UK = [];
   let France = [];
@@ -229,6 +260,7 @@ export const getRecovered = (data) => {
   let Colombia = [];
   let Japan = [];
   let Ukraine = [];
+  let Belgium = [];
 
   let sumArr = [];
 
@@ -291,6 +323,9 @@ export const getRecovered = (data) => {
     if (curr.countryRegion === "Ukraine") {
       Ukraine.push(curr);
     }
+    if (curr.countryRegion === "Belgium") {
+      Belgium.push(curr);
+    }
   });
 
   const getTotal = (stateArr, state) => {
@@ -321,6 +356,7 @@ export const getRecovered = (data) => {
   getTotal(Colombia, "Colombia");
   getTotal(Japan, "Japan");
   getTotal(Ukraine, "Ukraine");
+  getTotal(Belgium, "Belgium");
 
   data.forEach((curr) => {
     const selectedCountries = [
@@ -343,6 +379,7 @@ export const getRecovered = (data) => {
       "Colombia",
       "Japan",
       "Ukraine",
+      "Belgium",
     ];
     if (selectedCountries.indexOf(curr.countryRegion) === -1) {
       sumArr.push([curr.countryRegion, curr.recovered]);
@@ -370,7 +407,6 @@ export const getDeaths = (data) => {
   let Sweden = [];
   let Japan = [];
   let Ukraine = [];
-
   let US = [];
   let China = [];
   let UK = [];
@@ -542,7 +578,7 @@ export const renderCountry = (
 
   const countries = confirmed.map((curr, index) => renderMarkUp(curr, index));
   // console.log(countries);
-  if (prev >= 0 && next <= 19) {
+  if (prev >= 0 && next <= 20) {
     countries.slice(prev * 10, next * 10).forEach((cur, index) => {
       DOMs.totalCaseTable.insertAdjacentHTML("beforeend", cur);
     });
